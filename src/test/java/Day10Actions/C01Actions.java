@@ -1,4 +1,4 @@
-package Day05;
+package Day10Actions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
@@ -9,26 +9,31 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class beforetesti {
+public class C01Actions {
+
     WebDriver driver;
 
     @Before
-    public void test1(){
+    public void setup(){
+
         WebDriverManager.chromedriver().setup();
         driver=new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
-
-    }
-
-    @Test
-    public void test2(){
-
-        driver.get("https://www.amazon.com");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(13));
     }
     @After
-    public void tearDown(){
-        driver.close();
+    public void teardown(){
+        driver.quit();
+    }
+    @Test
+    public void test(){
+        //amazon a gidelim
+        // account menusunden creat a list linkine tiklayalim
+        driver.get("https://www.amazon.com");
+
+
+
+
     }
 
 }
