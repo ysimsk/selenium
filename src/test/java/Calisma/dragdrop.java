@@ -41,7 +41,10 @@ public class dragdrop {
         WebElement dropme=driver.findElement(By.xpath("(//*[@id='droppable'])[1]"));
         Actions actions=new Actions(driver);
         actions.dragAndDrop(dragme,dropme).perform();
-        Assert.assertTrue(driver.findElement(By.xpath("//*[text()='Dropped!']")).isDisplayed());
+      // Assert.assertTrue(driver.findElement(By.xpath("//*[text()='Dropped!']")).isDisplayed());
+       // String expect="Dropped!";
+       Assert.assertEquals("Dropped!",driver.findElement(By.xpath("//*[text()='Dropped!']")).getText());
+       // System.out.println("driver.findElement(By.xpath(\"//*[text()='Dropped!']\")).getText() = " + driver.findElement(By.xpath("//*[text()='Dropped!']")).getText());
 
     }
 
