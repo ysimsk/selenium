@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
@@ -27,11 +28,25 @@ WebDriver driver;
 }
 @Test
     public void test1(){
-    // https://the-internet.herokuapp.com/javascript_alerts adresine gidelim
-    driver.get("https://the-internet.herokuapp.com/javascript_alerts");
-    driver.findElement(By.xpath("//*[text()='Click for JS Alert']")).click();
-    System.out.println("driver.switchTo().alert().getText() = " + driver.switchTo().alert().getText());
-    driver.switchTo().alert().accept();
+    //"http://webdriveruniversity.com/IFrame/index.html" sayfasina gidin
+    driver.get("http://webdriveruniversity.com/IFrame/index.html");
+    //Our Products" butonuna basin
+    WebElement iframe= driver.findElement(By.xpath("//iframe"));
+    driver.switchTo().frame(iframe);
+    driver.findElement(By.xpath("//*[text()='Our Products']")).click();
+
+    //Cameras product"i tiklayin
+    driver.findElement(By.id("camera-img")).click();
+
+    // Popup mesajini yazdirin
+    //WebElement yazi=driver.findElement(By.xpath("//*[@class='modal-header']"));
+   // System.out.println(yazi.getText());
+ // System.out.println("yazi"+driver.findElement(By.xpath("//*[@class='modal-title']")).getText());
+
+    //close" butonuna basin
+//WebdriverUniversity.com (IFrame)" linkini tiklayin
+//http://webdriveruniversity.com/index.html" adresine gittigini test edin
+
 
 }
 }
