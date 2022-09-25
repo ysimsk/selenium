@@ -1,4 +1,4 @@
-package Day13cookies;
+package Day13cookieswebtables;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;

@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 
-public class C01 {
+public class question1 {
     WebDriver driver;
 
     @Before
@@ -47,7 +47,7 @@ public class C01 {
         WebElement name = driver.findElement(By.xpath("//*[@name='name']"));
         name.sendKeys("yusuf");
         WebElement email = driver.findElement(By.xpath("(//*[@name='email'])[2]"));
-        email.sendKeys("yusuf2@gmail.com");
+        email.sendKeys("ysf@gmail.com");
         // 7. Click 'Signup' button
         driver.findElement(By.xpath("(//*[@type='submit'])[2]")).click();
         // 8. Verify that 'ENTER ACCOUNT INFORMATION' is visible('HESAP BİLGİLERİNİ GİRİN' ifadesinin görünür olduğunu doğrulayın
@@ -57,7 +57,7 @@ public class C01 {
         driver.findElement(By.xpath("//*[@id='id_gender1']")).click();
         Actions actions = new Actions(driver);
         WebElement isim = driver.findElement(By.xpath("//*[@id='name']"));
-        // isim.sendKeys("yusuf");
+
         actions.sendKeys(Keys.TAB).sendKeys(Keys.TAB).
                 sendKeys("12345").
                 sendKeys(Keys.TAB).sendKeys("14").sendKeys(Keys.TAB).
@@ -75,21 +75,23 @@ public class C01 {
         actions.sendKeys(Keys.ENTER).sendKeys("yusuf").sendKeys(Keys.TAB).sendKeys("simsek").sendKeys(Keys.TAB).
                 sendKeys("wwww").sendKeys(Keys.TAB).sendKeys("Den Haag").sendKeys(Keys.TAB).sendKeys("Nederland").perform();
         WebElement country = driver.findElement(By.xpath("//*[@id='country']"));
-        //actions.click(country).sendKeys("Canada").perform();
+
         Select select = new Select(country);
         select.selectByIndex(2);
         actions.sendKeys(Keys.TAB).
                 sendKeys(Keys.ENTER).sendKeys("holland").sendKeys(Keys.TAB).sendKeys("Amsterdam").sendKeys(Keys.TAB).
-                sendKeys("2545Hb").sendKeys(Keys.TAB).sendKeys("1234567890").perform();
-
-
-        // 13. Click 'Create Account button'
-        WebElement create = driver.findElement(By.xpath("(//*[@type='submit'])[1]"));
-create.click();
-// 14. Verify that 'ACCOUNT CREATED!' is visible
+                sendKeys("2545Hb").sendKeys(Keys.TAB).sendKeys("1234567890").sendKeys(Keys.TAB).
+                // 13. Click 'Create Account button'
+                        sendKeys(Keys.ENTER).perform();
+        // 14. Verify that 'ACCOUNT CREATED!' is visible
+        Assert.assertTrue(driver.findElement(By.xpath("//*[text()='Account Created!']")).isDisplayed());
         // 15. Click 'Continue' button
+        driver.findElement(By.xpath("//*[text()='Continue']")).click();
         // 16. Verify that 'Logged in as username' is visible
+        Assert.assertTrue(driver.findElement(By.xpath("//*[text()='yusuf']")).isDisplayed());
         // 17. Click 'Delete Account' button
+        driver.findElement(By.xpath("(//*[@style='color:brown;'])[2]")).click();
         // 18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+        Assert.assertTrue(driver.findElement(By.xpath("(//*[text()='Delete Account'])[2]")).isDisplayed());
     }
 }
